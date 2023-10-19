@@ -39,11 +39,14 @@ initial begin
 always #1 clk=~clk;
 always #16 big_clk = ~big_clk;
 
+//Code for writing the data is not working right now!!
+//Will change the code later
 initial begin
-    file_handle = $fopen("E:/Programs/Verilog_IITI_work/Vivado_atharv/Multiplier_Accumulator/outputdata.txt", "w");
-    $readmemb("E:/Programs/Verilog_IITI_work/Vivado_atharv/Multiplier_Accumulator/inputdata.txt", memory);
+  file_handle = $fopen("[YourLocation]/outputdata.txt", "w");
+    $readmemb("[YourLocation]/inputdata.txt", memory);
     if(N > 0)   hasdata = 1;
 end
+
 
 always @(posedge big_clk & hasdata) begin
     if(N <= i) begin
